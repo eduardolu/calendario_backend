@@ -1,11 +1,15 @@
-const mogoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const dbConection = async()=>{
     try {
-        mongoose.connect('mongodb://127.0.0.1:27017/test');
-
+        await mongoose.connect(process.env.DB_CNN);
+        console.log('DB online');
     } catch (error) {
         console.log(error);
         throw new error('error de inicializar el BD')
     }
+}
+
+module.exports = {
+    dbConection,
 }
