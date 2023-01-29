@@ -12,7 +12,7 @@ const router = Router();
 router.use( validarJwt )
 
 //obtener evento
-router.get(
+router.post(
     '/', 
     [
         check('title','titulo no debe estar vacio').not().isEmpty(),
@@ -20,10 +20,10 @@ router.get(
         check('end','fecha final no debe estar vacio').custom(isDate),
         validarCampos
     ],
-    getEventos
+    crearEventos
 )
 
-router.post('/', crearEventos)
+router.get('/', getEventos)
 
 router.put('/:id', actualizarEventos)
 
